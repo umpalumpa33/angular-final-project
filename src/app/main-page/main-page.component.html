@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Final Project</title>
+  </head>
+  <body>
+    <header>
+      <div class="a_routers">
+        <a routerLink="/posts">Posts</a>
+        <a routerLink="/albums">Albums</a>
+        <a routerLink="/todos">Todos</a>
+      </div>
+    </header>
+    <main>
+      <div class="background">
+        <img id="background_image" src="/assets/background.jpg" alt="Image" />
+        <div class="grid_overlay">
+          <div class="posts" (click)="navigateToPosts()">
+            <img src="/assets/posts.png" />
+            <h5>Posts</h5>
+          </div>
+          <div class="albums" (click)="navigateToAlbums()">
+            <img src="/assets/albums.png" />
+            <h5>Albums</h5>
+          </div>
+          <div class="todos" (click)="navigateToTodos()">
+            <img src="/assets/todos.png" />
+            <h5>Todos</h5>
+          </div>
+        </div>
+      </div>
+      <div class="content"></div>
+    </main>
+  </body>
+</html>
