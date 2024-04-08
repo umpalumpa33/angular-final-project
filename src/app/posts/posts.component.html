@@ -1,1 +1,37 @@
-<p>posts works!</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Final Project</title>
+  </head>
+  <body>
+    <header>
+      <div class="a_routers">
+        <a routerLink="/posts" id="posts">Posts</a>
+        <a routerLink="/albums">Albums</a>
+        <a routerLink="/todos"> Todos</a>
+      </div>
+    </header>
+    <hr />
+    <main>
+      <button id="add_post_btn">Add Post</button>
+      <table>
+        <thead>
+          <tr>
+            <th>POST'S USER</th>
+            <th>TITLE</th>
+            <th>BODY</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let post of posts">
+            <td>{{ post.userName }}</td>
+            <td>{{ post.title }}</td>
+            <td>{{ post.body }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>

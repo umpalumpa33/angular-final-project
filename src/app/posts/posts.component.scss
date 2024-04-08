@@ -1,0 +1,77 @@
+body {
+  width: 100%;
+}
+
+header {
+  width: 77.5%;
+  margin: 0 auto;
+  padding: 2vh 0vw 0vh 0vw;
+}
+
+#posts {
+  background-color: #e32324;
+  border: 1px solid #e32324;
+  border-radius: 5px;
+  color: white;
+}
+
+.a_routers a {
+  padding: 1vh 1vw;
+}
+
+.a_routers {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 1vw;
+}
+
+.a_routers a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+  margin-bottom: 1vh;
+}
+
+main {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  background-image: url(/assets/posts_background.png);
+}
+
+#add_post_btn {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 1vh 1vw;
+  margin-top: 3vh;
+  border: 1px solid #006fb4;
+  background-color: #006fb4;
+  color: white;
+  cursor: pointer;
+}
+
+table {
+  width: 77.5%;
+  margin: 0 auto;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  width: calc(100% / 3);
+  padding: 15px;
+}
+
+td {
+  border: 1px solid #ddd;
+}
+
+th {
+  text-align: center;
+  background-color: #01a4da;
+  color: white;
+}
