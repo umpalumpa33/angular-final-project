@@ -8,6 +8,8 @@ import { PostsComponent } from './posts/posts.component';
 import { AlbumsComponent } from './albums/albums.component';
 import { TodosComponent } from './todos/todos.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommentsComponent } from './posts/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,15 @@ import { MainPageComponent } from './main-page/main-page.component';
     PostsComponent,
     AlbumsComponent,
     TodosComponent,
-    MainPageComponent
+    MainPageComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

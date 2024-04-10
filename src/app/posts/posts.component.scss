@@ -53,11 +53,49 @@ main {
   cursor: pointer;
 }
 
+.post_block {
+  display: flex;
+  flex-direction: column;
+  padding: 4vh 1vw;
+  width: 33%;
+  gap: 1vh;
+  border: 1px solid #7fc7e7;
+  background-color: #7fc7e7;
+  border-radius: 5px;
+  max-width: 500px;
+  color: white;
+  margin: 0 auto;
+}
+
+.invalid_input {
+  border: 2px solid red !important;
+}
+
+.post_block input {
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 1.5%;
+}
+
+.post_block button {
+  width: fit-content;
+  padding: 1vh 1vw;
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid red;
+  cursor: pointer;
+}
+
 table {
   width: 77.5%;
   margin: 0 auto;
   table-layout: fixed;
   border-collapse: collapse;
+}
+
+tr {
+  cursor: pointer;
 }
 
 th,
