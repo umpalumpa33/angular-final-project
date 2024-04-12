@@ -1,12 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable, of, BehaviorSubject } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { Comments } from 'src/app/interfaces/comments.interface';
 import { Posts } from 'src/app/interfaces/posts.interface';
-import { ActivatedRoute } from '@angular/router';
-import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-comments',
@@ -15,25 +13,19 @@ import { ApiService } from 'src/app/api.service';
 })
 export class CommentsComponent implements OnInit {
   comments$: Observable<Comments[]> | null = null;
-  private _postTitle = new BehaviorSubject<string>('');
-  postTitle$: Observable<string> = this._postTitle.asObservable();
-
-  private _postBody = new BehaviorSubject<string>('');
-  postBody$: Observable<string> = this._postBody.asObservable();
-
+  postTitle: string = '';
+  postBody: string = '';
   lastNumberFromUrl: number | null = null;
   postId: number | null = null;
   addForm: FormGroup;
   isEditing: boolean = false;
   editedPostTitle: string = '';
   editedPostBody: string = '';
-  editMode!: boolean
+  editMode!: boolean;
 
   constructor(
     private http: HttpClient,
     private fb: FormBuilder,
-    private route: ActivatedRoute,
-    private apiService: ApiService
   ) {
     this.addForm = this.fb.group({
       commentName: ['', Validators.required],
@@ -68,9 +60,9 @@ export class CommentsComponent implements OnInit {
     if (this.lastNumberFromUrl !== null) {
       this.http.get<Posts>(`https://jsonplaceholder.typicode.com/posts/${this.lastNumberFromUrl}`)
         .subscribe((post) => {
-          this._postTitle.next(post.title);
-          this._postBody.next(post.body);
-          this.editedPostTitle = post.title;
+          this.postTitle = post.title;
+          this.postBody = post.body;
+          this.editedPostTitle = post.title; 
           this.editedPostBody = post.body;
         }, (error) => {
           console.error('Error loading post:', error);
@@ -101,12 +93,16 @@ export class CommentsComponent implements OnInit {
   }
 
   toggleEditMode(): void {
-    this.editMode = !this.editMode
+    this.editMode = !this.editMode;
+    if (!this.editMode) {
+      this.postTitle = this.editedPostTitle;
+      this.postBody = this.editedPostBody;
+    }
   }
 
   savePost(): void {
-    this._postTitle.next(this.editedPostTitle);
-    this._postBody.next(this.editedPostBody);
-    this.isEditing = false;
+    this.editedPostTitle = this.postTitle;
+    this.editedPostBody = this.postBody;
+    this.toggleEditMode();
   }
 }

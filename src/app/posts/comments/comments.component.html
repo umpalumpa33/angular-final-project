@@ -19,20 +19,20 @@
         <div *ngIf="editMode" class="left_flex">
           <h1>Title</h1>
           <hr />
-          <input type="text" [(ngModel)]="postTitle$" />
+          <input type="text" [(ngModel)]="postTitle" />
           <h1>Body</h1>
           <hr />
-          <input type="text" [(ngModel)]="postBody$" />
-          <button type="button" (click)="toggleEditMode()">Edit</button>
+          <input type="text" [(ngModel)]="postBody" />
+          <button type="button" (click)="savePost()">Update</button>
         </div>
         <div *ngIf="!editMode" class="left_flex">
           <h1>Title</h1>
           <hr />
-          <p>{{ postTitle$ | async }}</p>
+          <p>{{ postTitle }}</p>
           <h1>Body</h1>
           <hr />
           <p>
-            {{ postBody$ | async }}
+            {{ postBody }}
           </p>
           <button type="button" (click)="toggleEditMode()">Edit</button>
         </div>
