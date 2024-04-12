@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../interfaces/user.interface';
-import {Posts} from '../interfaces/posts.interface'
+import { Posts } from '../interfaces/posts.interface'
 import { ApiService } from '../api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -18,7 +20,7 @@ export class PostsComponent implements OnInit {
   posts: Posts[] = [];
   showForm = false;
   addForm!: FormGroup;
-  
+  comments$: Observable<Comment[]> | undefined;
   usersMap: { [key: number]: string } = {};
   newAuthor!: string;
   newBody!: string;
@@ -26,7 +28,7 @@ export class PostsComponent implements OnInit {
   newUserName: any;
   dataReady = false;
 
-  constructor(private apiService: ApiService, private fb: FormBuilder, private router: Router) { }
+  constructor(private apiService: ApiService, private fb: FormBuilder, private router: Router, private http: HttpClient) { }
  
 
   ngOnInit(): void {
@@ -57,18 +59,19 @@ export class PostsComponent implements OnInit {
     });
   }
 
+
   navigateToPost(postId: number): void {
     this.router.navigate(['/posts', postId]);
   }
 
   addPost() {
     if (this.addForm.valid) {
-      let newUserId = 1; // Default value for new user id
-      let newId = 1; // Default value for new post id
+      let newUserId = 1; 
+      let newId = 1; 
       
       if (this.posts.length > 0) {
-        newUserId = this.getLastUserId() + 1; // Increment the last user id
-        newId = this.posts[this.posts.length - 1].id + 1; // Increment the last post id
+        newUserId = this.getLastUserId() + 1; 
+        newId = this.posts[this.posts.length - 1].id + 1; 
       }
       
       const newPost = {

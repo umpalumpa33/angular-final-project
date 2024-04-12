@@ -1,7 +1,6 @@
 export interface Comments {
-        postId: Number,
-        id: Number,
+        postId: number | null,
+        id: number,
         name: String,
-        email: String,
         body: String
 }

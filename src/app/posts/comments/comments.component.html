@@ -14,6 +14,48 @@
       </div>
     </header>
     <hr />
-    <main></main>
+    <main>
+      <div class="flex">
+        <div class="left_flex">
+          <h1>Title</h1>
+          <hr />
+          <p>asdasdasdasdasd</p>
+          <h1>Body</h1>
+          <hr />
+          <p>
+            asdasdasdas dasd asd asd asd asd asd asd asd as d asd asdasdasdas
+            dasd asd asd asd asd asd asd asd as d asd
+          </p>
+          <button type="button">Edit</button>
+        </div>
+        <div class="right_flex">
+          <div class="comments_section">
+            <ul>
+              <li *ngFor="let comment of comments$ | async">
+                <div class="left_comment">
+                  <img src="/assets/pfp.jpg" alt="" />
+                </div>
+                <div class="comment_content">
+                  <h4>{{ comment.name }}</h4>
+                  <p>{{ comment.body }}</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="add_comm">
+            <div class="pfp">
+              <img src="/assets/pfp.jpg" />
+            </div>
+            <form [formGroup]="addForm" class="add_section">
+              <h4>Name</h4>
+              <input type="text" formControlName="commentName" />
+              <h4>Body</h4>
+              <input type="text" formControlName="commentBody" />
+              <button type="button" (click)="addComment()">Add</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
