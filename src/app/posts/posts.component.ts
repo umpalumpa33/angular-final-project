@@ -60,10 +60,9 @@ export class PostsComponent implements OnInit {
   }
 
 
-  navigateToPost(postId: number): void {
-    this.router.navigate(['/posts', postId]);
+  navigateToPost(post: Posts): void {
+    this.router.navigate(['/posts', post.id]);
   }
-
   addPost() {
     if (this.addForm.valid) {
       let newUserId = 1; 

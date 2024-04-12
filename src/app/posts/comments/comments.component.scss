@@ -83,7 +83,7 @@ main {
   flex-direction: column;
   gap: 2vh;
   padding: 15px;
-  height: 73vh;
+  height: fit-content;
   overflow-y: auto;
 }
 
@@ -122,9 +122,43 @@ li img {
   padding: 20px 35px;
   background-color: #f0f0f0;
   justify-content: center;
+  gap: 1vw;
+}
+
+.pfp {
+  display: flex;
+  align-items: center;
 }
 
 .pfp img {
   max-width: 75px;
   max-height: 125px;
+}
+
+form {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+form input {
+  border-top: 1px solid transparent;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  background-color: #f0f0f0;
+  width: 100%;
+  margin-bottom: 2vh;
+  margin-top: 1vh;
+  height: 3vh;
+  overflow: auto;
+}
+
+form button {
+  align-self: flex-end;
+  padding: 10px 20px;
+  border: 1px solid #808080;
+  border-radius: 5px;
+  color: white;
+  background-color: #808080;
+  cursor: pointer;
 }

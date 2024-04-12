@@ -16,17 +16,25 @@
     <hr />
     <main>
       <div class="flex">
-        <div class="left_flex">
+        <div *ngIf="editMode" class="left_flex">
           <h1>Title</h1>
           <hr />
-          <p>asdasdasdasdasd</p>
+          <input type="text" [(ngModel)]="postTitle$" />
+          <h1>Body</h1>
+          <hr />
+          <input type="text" [(ngModel)]="postBody$" />
+          <button type="button" (click)="toggleEditMode()">Edit</button>
+        </div>
+        <div *ngIf="!editMode" class="left_flex">
+          <h1>Title</h1>
+          <hr />
+          <p>{{ postTitle$ | async }}</p>
           <h1>Body</h1>
           <hr />
           <p>
-            asdasdasdas dasd asd asd asd asd asd asd asd as d asd asdasdasdas
-            dasd asd asd asd asd asd asd asd as d asd
+            {{ postBody$ | async }}
           </p>
-          <button type="button">Edit</button>
+          <button type="button" (click)="toggleEditMode()">Edit</button>
         </div>
         <div class="right_flex">
           <div class="comments_section">
@@ -51,6 +59,7 @@
               <input type="text" formControlName="commentName" />
               <h4>Body</h4>
               <input type="text" formControlName="commentBody" />
+              <br />
               <button type="button" (click)="addComment()">Add</button>
             </form>
           </div>

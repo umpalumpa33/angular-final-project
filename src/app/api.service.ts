@@ -22,7 +22,7 @@ export class ApiService {
   }
 
   getCommentsForPost(postId: number): Observable<Comment[]> {
-    return this.http.get<Comment[]>(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`);
+    return this.http.get<Comment[]>(`${this.apiUrl}/posts/${postId}/comments`);
   }
 
 
