@@ -4,8 +4,8 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../interfaces/user.interface';
-import { Posts } from '../interfaces/posts.interface';
 import { Albums } from '../interfaces/albums.interface';
+import { Photos } from '../interfaces/photos.interface';
 
 @Component({
   selector: 'app-albums',
@@ -14,8 +14,8 @@ import { Albums } from '../interfaces/albums.interface';
 })
 export class AlbumsComponent implements OnInit {
   usersMap: { [key: number]: string } = {};
-  posts: Posts[] = [];
   albums: Albums[] = [];
+  photos: Photos[] = [];
 
   constructor(private apiService: ApiService, private fb: FormBuilder, private router: Router, private http: HttpClient) { }
 
@@ -35,8 +35,8 @@ export class AlbumsComponent implements OnInit {
     });
   }
 
-  navigateToPost(post: Posts): void {
-    this.router.navigate(['/posts', post.id]);
+  navigateToPhotos(album: Albums): void {
+    this.router.navigate(['/albums', album.id]);
   }
 
 }

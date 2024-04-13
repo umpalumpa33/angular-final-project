@@ -24,7 +24,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let album of albums">
+          <tr (click)="navigateToPhotos(album)" *ngFor="let album of albums">
             <td>{{ usersMap[album.userId] }}</td>
             <td>{{ album.title }}</td>
             <td>50</td>

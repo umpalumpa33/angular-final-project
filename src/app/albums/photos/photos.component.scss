@@ -1,0 +1,64 @@
+body {
+  width: 100%;
+}
+
+header {
+  width: 77.5%;
+  margin: 0 auto;
+  padding: 2vh 0vw 0vh 0vw;
+}
+
+.a_routers a {
+  padding: 1vh 1vw;
+}
+
+.a_routers {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 1vw;
+}
+
+.a_routers a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+  margin-bottom: 1vh;
+}
+
+main {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  background-image: url(/assets/posts_background.png);
+}
+
+.grid {
+  width: 77.5%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.item {
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.item span {
+  color: #3bb7e1;
+}
+
+.item img {
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 15px;
+  height: auto;
+}

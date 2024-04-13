@@ -4,6 +4,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { User } from '../app/interfaces/user.interface';
 import { Posts } from '../app/interfaces/posts.interface'
 import { Albums } from './interfaces/albums.interface';
+import { Photos } from './interfaces/photos.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,10 @@ export class ApiService {
 
   getAlbums(): Observable<Albums[]>{
     return this.http.get<Albums[]>(`${this.apiUrl}/albums`)
+  }
+
+  getPhotos(albumId: number): Observable<Photos[]> {
+    return this.http.get<Photos[]>(`${this.apiUrl}/albums/${albumId}/photos`);
   }
 
   getCommentsForPost(postId: number): Observable<Comment[]> {

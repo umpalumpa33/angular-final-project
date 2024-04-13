@@ -1,1 +1,26 @@
-<p>photos works!</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <div class="a_routers">
+        <a routerLink="/posts">Posts</a>
+        <a routerLink="/albums" id="albums">Albums</a>
+        <a routerLink="/todos"> Todos</a>
+      </div>
+    </header>
+    <hr />
+    <main>
+      <div class="grid">
+        <div class="item" *ngFor="let photo of photos$ | async">
+          <img [src]="photo.url" [alt]="photo.title" />
+          <h3><span>Title:</span> {{ photo.title }}</h3>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -6,6 +6,7 @@ import { AlbumsComponent } from './albums/albums.component';
 import { TodosComponent } from './todos/todos.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { CommentsComponent } from './posts/comments/comments.component';
+import { PhotosComponent } from './albums/photos/photos.component';
 
 const routes: Routes = [
   { 
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'albums',
     component: AlbumsComponent
+  },
+  {
+    path: 'albums/:albumsId',
+    component: PhotosComponent
   },
   {
     path: 'todos',
