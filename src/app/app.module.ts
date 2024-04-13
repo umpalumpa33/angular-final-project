@@ -10,6 +10,7 @@ import { TodosComponent } from './todos/todos.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommentsComponent } from './posts/comments/comments.component';
+import { PhotosComponent } from './albums/photos/photos.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CommentsComponent } from './posts/comments/comments.component';
     AlbumsComponent,
     TodosComponent,
     MainPageComponent,
-    CommentsComponent
+    CommentsComponent,
+    PhotosComponent
   ],
   imports: [
     BrowserModule,

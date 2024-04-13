@@ -1,1 +1,36 @@
-<p>albums works!</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Final Project</title>
+  </head>
+  <body>
+    <header>
+      <div class="a_routers">
+        <a routerLink="/posts">Posts</a>
+        <a routerLink="/albums" id="albums">Albums</a>
+        <a routerLink="/todos"> Todos</a>
+      </div>
+    </header>
+    <hr />
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th>ALBUMS'S USER</th>
+            <th>TITLE</th>
+            <th>NUMBER OF PHOTOS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let album of albums">
+            <td>{{ usersMap[album.userId] }}</td>
+            <td>{{ album.title }}</td>
+            <td>50</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>

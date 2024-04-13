@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { User } from '../app/interfaces/user.interface';
 import { Posts } from '../app/interfaces/posts.interface'
+import { Albums } from './interfaces/albums.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,10 @@ export class ApiService {
 
   getPosts(): Observable<Posts[]> {
     return this.http.get<Posts[]>(`${this.apiUrl}/posts`).pipe(catchError(handleFunction));
+  }
+
+  getAlbums(): Observable<Albums[]>{
+    return this.http.get<Albums[]>(`${this.apiUrl}/albums`)
   }
 
   getCommentsForPost(postId: number): Observable<Comment[]> {
