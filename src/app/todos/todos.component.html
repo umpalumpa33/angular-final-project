@@ -1,1 +1,32 @@
-<p>todos works!</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <div class="a_routers">
+        <a routerLink="/posts">Posts</a>
+        <a routerLink="/albums">Albums</a>
+        <a routerLink="/todos" id="todos"> Todos</a>
+      </div>
+    </header>
+    <hr />
+    <main>
+      <ul>
+        <li *ngFor="let todo of todos$ | async">
+          <div class="task">
+            <p><span>Title:</span> {{ todo.title }}</p>
+            <div class="completion">
+              <p><span>Completion: </span></p>
+              <img *ngIf="todo.completed == false" src="/assets/false.png" />
+              <img src="/assets/true.png" *ngIf="todo.completed == true" />
+            </div>
+          </div>
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+body {
+  width: 100%;
+}
+
+header {
+  width: 77.5%;
+  margin: 0 auto;
+  padding: 2vh 0vw 0vh 0vw;
+}
+
+#todos {
+  background-color: #e32324;
+  border: 1px solid #e32324;
+  border-radius: 5px;
+  color: white;
+}
+
+.a_routers a {
+  padding: 1vh 1vw;
+}
+
+.a_routers {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 1vw;
+}
+
+.a_routers a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+  margin-bottom: 1vh;
+}
+
+main {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 3vh 0 0 0;
+  gap: 3vh;
+  background-image: url(/assets/posts_background.png);
+}
+
+ul {
+  width: 77.5%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  list-style: none;
+}
+
+span {
+  color: #3bb7e1;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.task {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2vh 1vw;
+  background-color: white;
+  border-radius: 11px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.completion {
+  display: flex;
+  flex-direction: row;
+}

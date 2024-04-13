@@ -5,6 +5,7 @@ import { User } from '../app/interfaces/user.interface';
 import { Posts } from '../app/interfaces/posts.interface'
 import { Albums } from './interfaces/albums.interface';
 import { Photos } from './interfaces/photos.interface';
+import { Todos } from './interfaces/todos.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,10 @@ export class ApiService {
 
   getPhotos(albumId: number): Observable<Photos[]> {
     return this.http.get<Photos[]>(`${this.apiUrl}/albums/${albumId}/photos`);
+  }
+
+  getTodos(): Observable<Todos[]>{
+    return this.http.get<Todos[]>(`${this.apiUrl}/todos`)
   }
 
   getCommentsForPost(postId: number): Observable<Comment[]> {
