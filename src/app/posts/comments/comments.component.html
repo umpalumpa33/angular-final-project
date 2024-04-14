@@ -17,15 +17,17 @@
     <main>
       <div class="flex">
         <div *ngIf="editMode" class="left_flex">
+          <a routerLink="/posts">&lt;</a>
           <h1>Title</h1>
           <hr />
           <input type="text" [(ngModel)]="postTitle" />
           <h1>Body</h1>
           <hr />
-          <input type="text" [(ngModel)]="postBody" />
+          <textarea cols="20" rows="5" [(ngModel)]="postBody"></textarea>
           <button type="button" (click)="savePost()">Update</button>
         </div>
         <div *ngIf="!editMode" class="left_flex">
+          <a routerLink="/posts">&lt;</a>
           <h1>Title</h1>
           <hr />
           <p>{{ postTitle }}</p>
