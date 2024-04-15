@@ -28,6 +28,11 @@ export class ApiService {
     return this.http.get<Albums[]>(`${this.apiUrl}/albums`)
   }
 
+  getPhotosCount(albumId: number): Observable<Photos[]> {
+    return this.http.get<Photos[]>(`${this.apiUrl}/albums/${albumId}/photos`)
+      .pipe(catchError(handleFunction));
+  }
+
   getPhotos(albumId: number): Observable<Photos[]> {
     return this.http.get<Photos[]>(`${this.apiUrl}/albums/${albumId}/photos`);
   }

@@ -15,7 +15,7 @@ import { Photos } from '../interfaces/photos.interface';
 export class AlbumsComponent implements OnInit {
   usersMap: { [key: number]: string } = {};
   albums: Albums[] = [];
-  photos: Photos[] = [];
+  photosCountMap: { [key: number]: number } = {}; // Map to store photo counts for each album
 
   constructor(private apiService: ApiService, private fb: FormBuilder, private router: Router, private http: HttpClient) { }
 
@@ -23,6 +23,7 @@ export class AlbumsComponent implements OnInit {
     this.apiService.getAlbums().subscribe((albums: Albums[]) => {
       this.albums = albums;
       this.loadUsers();
+      this.loadPhotosCount();
     });
   }
 
@@ -35,8 +36,15 @@ export class AlbumsComponent implements OnInit {
     });
   }
 
+  loadPhotosCount(): void {
+    this.albums.forEach((album) => {
+      this.apiService.getPhotosCount(album.id).subscribe((photos: Photos[]) => {
+        this.photosCountMap[album.id] = photos.length; // Store the number of photos for the album
+      });
+    });
+  }
+
   navigateToPhotos(album: Albums): void {
     this.router.navigate(['/albums', album.id]);
   }
-
 }
