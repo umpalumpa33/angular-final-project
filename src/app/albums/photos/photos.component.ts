@@ -27,8 +27,14 @@ export class PhotosComponent implements OnInit {
 
   loadPhotos(): void {
     if (this.lastNumberFromUrl !== null) {
-      this.photos$ = this.http.get<Photos[]>(`https://jsonplaceholder.typicode.com/posts/${this.lastNumberFromUrl}/comments`)
-        ;
+      this.photos$ = this.http.get<Photos[]>(`https://jsonplaceholder.typicode.com/albums/${this.lastNumberFromUrl}/photos`)
+        .pipe(
+          catchError(error => {
+            console.error('Error loading comments:', error);
+            return of([]);
+          })
+        );
     }
   }
+
 }

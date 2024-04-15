@@ -15,8 +15,8 @@ export class CommentsComponent implements OnInit {
   comments$: Observable<Comments[]> | null = null;
   postTitle: string = '';
   postBody: string = '';
-  lastNumberFromUrl: number | null = null;
-  postId: number | null = null;
+  lastNumberFromUrl!: number 
+  postId!: number
   addForm: FormGroup;
   isEditing: boolean = false;
   editedPostTitle: string = '';
@@ -62,8 +62,6 @@ export class CommentsComponent implements OnInit {
         .subscribe((post) => {
           this.postTitle = post.title;
           this.postBody = post.body;
-          this.editedPostTitle = this.postTitle; 
-          this.editedPostBody = this.postBody;
         }, (error) => {
           console.error('Error loading post:', error);
         });
@@ -93,10 +91,6 @@ export class CommentsComponent implements OnInit {
 
   toggleEditMode(): void {
     this.editMode = !this.editMode;
-    if (!this.editMode) {
-      this.postTitle = this.editedPostTitle;
-      this.postBody = this.editedPostBody;
-    }
   }
 
   savePost(): void {
