@@ -23,7 +23,7 @@
           <input type="text" [(ngModel)]="postTitle" />
           <h1>Body</h1>
           <hr />
-          <textarea cols="20" rows="5" [(ngModel)]="postBody"></textarea>
+          <textarea rows="5" [(ngModel)]="postBody"></textarea>
           <button type="button" (click)="savePost()">Update</button>
         </div>
         <div *ngIf="!editMode" class="left_flex">

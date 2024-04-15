@@ -22,6 +22,7 @@ export class CommentsComponent implements OnInit {
   editedPostTitle: string = '';
   editedPostBody: string = '';
   editMode!: boolean;
+  
 
   constructor(
     private http: HttpClient,
@@ -57,17 +58,15 @@ export class CommentsComponent implements OnInit {
   }
 
   loadPostTitleAndBody(): void {
-    if (this.lastNumberFromUrl !== null) {
       this.http.get<Posts>(`https://jsonplaceholder.typicode.com/posts/${this.lastNumberFromUrl}`)
         .subscribe((post) => {
           this.postTitle = post.title;
           this.postBody = post.body;
-          this.editedPostTitle = post.title; 
-          this.editedPostBody = post.body;
+          this.editedPostTitle = this.postTitle; 
+          this.editedPostBody = this.postBody;
         }, (error) => {
           console.error('Error loading post:', error);
         });
-    }
   }
 
   addComment(): void {
