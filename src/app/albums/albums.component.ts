@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { User } from '../interfaces/user.interface';
 import { Albums } from '../interfaces/albums.interface';
 import { Photos } from '../interfaces/photos.interface';
@@ -15,9 +13,9 @@ import { Photos } from '../interfaces/photos.interface';
 export class AlbumsComponent implements OnInit {
   usersMap: { [key: number]: string } = {};
   albums: Albums[] = [];
-  photosCountMap: { [key: number]: number } = {}; // Map to store photo counts for each album
+  photosCountMap: { [key: number]: number } = {}; 
 
-  constructor(private apiService: ApiService, private fb: FormBuilder, private router: Router, private http: HttpClient) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit(): void {
     this.apiService.getAlbums().subscribe((albums: Albums[]) => {
@@ -39,7 +37,7 @@ export class AlbumsComponent implements OnInit {
   loadPhotosCount(): void {
     this.albums.forEach((album) => {
       this.apiService.getPhotosCount(album.id).subscribe((photos: Photos[]) => {
-        this.photosCountMap[album.id] = photos.length; // Store the number of photos for the album
+        this.photosCountMap[album.id] = photos.length; 
       });
     });
   }

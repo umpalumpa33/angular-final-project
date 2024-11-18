@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from '../interfaces/user.interface';
 import { Posts } from '../interfaces/posts.interface';
 import { ApiService } from '../api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
+import { CommentsComponent } from './comments/comments.component';
 
 @Component({
   selector: 'app-posts',
@@ -20,6 +21,9 @@ export class PostsComponent implements OnInit {
   newBody!: string;
   newTitle!: string;
   dataReady = false;
+  postId: number = 1;
+  postTitle1: string = 'Initial Title';
+  @ViewChild(CommentsComponent) commentsComponent!: CommentsComponent;
 
   constructor(
     private apiService: ApiService,
@@ -32,6 +36,20 @@ export class PostsComponent implements OnInit {
       author: ['', Validators.required],
       title: ['', Validators.required],
       body: ['', Validators.required]
+    });
+
+    this.apiService.updatedPost$.subscribe(updatedPost => {
+      if (updatedPost) {
+        // Find the index of the updated post in the posts array
+        const index = this.posts.findIndex(post => post.id === updatedPost.id);
+        if (index !== -1) {
+          // Replace the existing post with the updated post
+          this.posts[index] = updatedPost;
+        } else {
+          // Add the new post to the posts array if it doesn't exist
+          this.posts.unshift(updatedPost);
+        }
+      }
     });
 
     forkJoin([
@@ -76,6 +94,24 @@ export class PostsComponent implements OnInit {
   getLastUserId(): number {
     return this.posts[this.posts.length - 1].userId;
   }
+  // onPostUpdated(event: { postTitle: string, postBody: string }): void {
+  //   // Find the post in the posts array that matches the postId
+  //   const postIndex = this.posts.findIndex(post => post.id === this.postId);
+  //   if (postIndex !== -1) {
+  //     // Update the title and body of the post
+  //     this.posts[postIndex].title = event.postTitle;
+  //     this.posts[postIndex].body = event.postBody;
+  //   }
+  // }
+
+  // updatePost(updatedPost: Posts): void {
+  //   // Find the index of the post with the matching ID
+  //   const index = this.posts.findIndex(post => post.id === updatedPost.id);
+  //   if (index !== -1) {
+  //     // Update the post with the new data
+  //     this.posts[index] = updatedPost;
+  //   }
+  // }
 
   toggleForm() {
     this.showForm = !this.showForm;
